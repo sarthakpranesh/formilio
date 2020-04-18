@@ -4,6 +4,9 @@ const chalk = require('chalk');
 const bodyParser = require('body-parser');
 const port = process.env.port;
 
+// initializing mongo connection
+require('./config/mongoDb');
+
 // adding global middleware
 app.use(bodyParser.json());
 app.use((req, res, next) => {
