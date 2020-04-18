@@ -9,6 +9,7 @@
     "start": "node app.js",
     "lint": "eslint ./"
   },
+  "pre-commit": [ "lint" ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sarthakpranesh/formilio.git"
@@ -31,6 +32,7 @@
     "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
     "eslint-config-google": "^0.14.0",
-    "mocha": "^7.1.1"
+    "mocha": "^7.1.1",
+    "pre-commit": "^1.2.2"
   }
 }
