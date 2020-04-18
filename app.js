@@ -14,6 +14,7 @@ app.use((req, res, next) => {
     res.sendStatus(200).end();
   }
   next();
+  
 });
 
 app.listen(port, () => {
