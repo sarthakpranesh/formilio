@@ -14,8 +14,19 @@ app.use((req, res, next) => {
     res.sendStatus(200).end();
   }
   next();
-  
 });
+
+// importing routes
+const connectClient = require('./routes/client/connectClient');
+const createForm = require('./routes/forms/createForm');
+
+// importing layer middleware
+const validateClient = require('./middleware/form/validateClient');
+
+// using routes and client specific middleware
+app.use(connectClient);
+app.use(validateClient);
+app.use(createForm);
 
 app.listen(port, () => {
   console.log(chalk.green('Server started successfully: ', port));
