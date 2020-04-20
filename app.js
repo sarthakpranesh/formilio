@@ -21,12 +21,14 @@ app.use((req, res, next) => {
 const connectClient = require('./routes/client/connectClient');
 const createForm = require('./routes/forms/createForm');
 const deleteForm = require('./routes/forms/deleteForm');
+const addResponse = require('./routes/response/submitResponse');
 
 // importing layer middleware
 const validateClient = require('./middleware/form/validateClient');
 
 // using routes and client specific middleware
 app.use(connectClient);
+app.use(addResponse);
 app.use(validateClient);
 app.use(createForm);
 app.use(deleteForm);

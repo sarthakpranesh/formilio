@@ -17,7 +17,7 @@ const formGenerationHandler = ({formName, fields} = {}) => {
         isFormCreated: true,
       });
     } catch (err) {
-      console.log(err.code);
+      console.log(err);
       const errMsg = mongoErrorHelper(err.code);
       reject({
         statusCode: 1,
