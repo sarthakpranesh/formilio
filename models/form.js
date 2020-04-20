@@ -5,8 +5,6 @@ const FormSchema = new mongoose.Schema({
     type: String,
     unique: [true, 'Hey Looks like that form name is already in use!'],
     required: [true, 'Please provide a form name'],
-    ref: 'response',
-    autopopulate: true,
   },
   createOn: {
     type: Date,
@@ -30,8 +28,6 @@ const FormSchema = new mongoose.Schema({
     },
   ],
 });
-
-FormSchema.plugin(require('mongoose-autopopulate'));
 
 FormSchema.pre('save', function(next, doc) {
   console.log('This is pre hook');
