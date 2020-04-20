@@ -19,6 +19,7 @@ app.use((req, res, next) => {
 // importing routes
 const connectClient = require('./routes/client/connectClient');
 const createForm = require('./routes/forms/createForm');
+const deleteForm = require('./routes/forms/deleteForm');
 
 // importing layer middleware
 const validateClient = require('./middleware/form/validateClient');
@@ -27,6 +28,7 @@ const validateClient = require('./middleware/form/validateClient');
 app.use(connectClient);
 app.use(validateClient);
 app.use(createForm);
+app.use(deleteForm);
 
 app.listen(port, () => {
   console.log(chalk.green('Server started successfully: ', port));
