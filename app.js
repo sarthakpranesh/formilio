@@ -11,7 +11,8 @@ require('./config/mongoDb');
 app.use(bodyParser.json());
 app.use((req, res, next) => {
   if (req.method === 'GET' && req.path === '/') {
-    res.sendStatus(200).end();
+    console.log(chalk.yellow('Ping'));
+    return res.sendStatus(200).end();
   }
   next();
 });

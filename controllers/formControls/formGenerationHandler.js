@@ -7,13 +7,7 @@ const formGenerationHandler = ({formName, fields} = {}) => {
     try {
       const newForm = new Form({
         formName,
-        fields: [
-          {
-            name: 'User Name',
-            type: 'String',
-            regEx: new RegExp(`[0-9]+`, 'g'),
-          },
-        ],
+        fields: fields,
       });
       await newForm.save();
       resolve({
@@ -23,6 +17,7 @@ const formGenerationHandler = ({formName, fields} = {}) => {
         isFormCreated: true,
       });
     } catch (err) {
+      console.log(err.code);
       const errMsg = mongoErrorHelper(err.code);
       reject({
         statusCode: 1,
