@@ -10,10 +10,11 @@ const addResponseHandler = ({formName, responseFields} = {}) => {
     try {
       const form = await Form.findByFormName(formName);
       const pass = await validateResponse(form.fields, responseFields);
+      console.log(pass);
       if (!pass) {
         throw new Error('Bad request');
       }
-      const response = new Response({_id: formName, any: responseFields});
+      const response = new Response({formName: formName, any: responseFields});
       await response.save();
       resolve({
         status: 200,
@@ -23,7 +24,7 @@ const addResponseHandler = ({formName, responseFields} = {}) => {
       });
     } catch (err) {
       reject({
-        status: err.message === 'Bad request' ? 400 : 500,
+        status: err.message === 'Bad request' || 'Form not found' ? 400 : 500,
         statusCode: 8,
         error: err.message,
         isResponseAdded: false,

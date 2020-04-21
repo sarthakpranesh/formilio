@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const ResponseSchema = new mongoose.Schema({
-  _id: {
+  formName: {
     type: String,
     required: true,
   },
