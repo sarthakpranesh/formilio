@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const chalk = require('chalk');
 const bodyParser = require('body-parser');
-const port = process.env.port;
+const port = process.env.PORT;
 
 // initializing mongo connection
 require('./config/mongoDb');
