@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 const validateResponse = (formFields, responseFields) => {
   /*
   Here formFields contain the rules and is a array of objects.
