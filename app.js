@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const chalk = require('chalk');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const port = process.env.PORT;
 
 // initializing mongo connection
@@ -29,6 +30,7 @@ const getAllForm = require('./routes/forms/getAllForm');
 const validateClient = require('./middleware/form/validateClient');
 
 // using routes and client specific middleware
+app.use(cors());
 app.use(connectClient);
 app.use(requestForm);
 app.use(addResponse);
