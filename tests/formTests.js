@@ -5,7 +5,7 @@ const assert = require('assert');
 
 chai.use(chaiHttp);
 
-const requestor = chai.request('localhost:8080').keepOpen();
+const requestor = chai.request('https://formilio-backend.herokuapp.com').keepOpen();
 const token = 'eyJhbGciOiJIUzI1NiJ9.VGhpc0lzTGl2ZXJwb29s.QD0sTbAXKcfYLznPWPTejHIV05xEkJTY9sMjVY0Qmjo';
 
 

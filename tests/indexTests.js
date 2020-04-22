@@ -4,7 +4,7 @@ const assert = require('assert');
 
 chai.use(chaiHttp);
 
-const requestor = chai.request('localhost:8080').keepOpen();
+const requestor = chai.request('https://formilio-backend.herokuapp.com').keepOpen();
 
 describe('Default Index server ping route', () => {
   it('Check if server pink runs', async () => {
