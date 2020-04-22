@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 const FormSchema = new mongoose.Schema({
   formName: {
     type: String,
-    unique: [true, 'Hey Looks like that form name is already in use!'],
-    required: [true, 'Please provide a form name'],
+    unique: true,
+    required: true,
   },
   createOn: {
     type: Date,
@@ -15,7 +15,6 @@ const FormSchema = new mongoose.Schema({
       name: {
         type: String,
         required: true,
-        unique: true,
       },
       type: {
         type: String,

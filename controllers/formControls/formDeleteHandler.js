@@ -1,10 +1,12 @@
 /* eslint-disable prefer-promise-reject-errors */
 const Form = require('../../models/form');
+const Response = require('../../models/response');
 
 const formDeleteHandler = ({formName} = {}) => {
   return new Promise(async (resolve, reject) => {
     try {
       await Form.findOneAndRemove({formName});
+      await Response.deleteMany({formName});
       resolve({
         statusCode: 1,
         status: 200,
