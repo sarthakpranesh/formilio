@@ -23,6 +23,7 @@ const createForm = require('./routes/forms/createForm');
 const deleteForm = require('./routes/forms/deleteForm');
 const addResponse = require('./routes/response/submitResponse');
 const requestForm = require('./routes/forms/requestForm');
+const getAllForm = require('./routes/forms/getAllForm');
 
 // importing layer middleware
 const validateClient = require('./middleware/form/validateClient');
@@ -34,6 +35,7 @@ app.use(addResponse);
 app.use(validateClient);
 app.use(createForm);
 app.use(deleteForm);
+app.use(getAllForm);
 
 app.listen(port, () => {
   console.log(chalk.green('Server started successfully: ', port));
