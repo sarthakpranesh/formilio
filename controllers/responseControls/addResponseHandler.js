@@ -20,7 +20,7 @@ const addResponseHandler = ({formName, responseFields} = {}) => {
         status: 200,
         statusCode: 1,
         error: null,
-        isResponseAdded: false,
+        isResponseAdded: true,
       });
     } catch (err) {
       reject({
