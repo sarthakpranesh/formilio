@@ -11,9 +11,13 @@ describe('Form Response Routes', () => {
     it('Correct Request', async () => {
       await requestor.post('/addResponse')
           .send({
-            formName: 'test',
+            formName: 'hostel',
             responseFields: {
               username: 'Sarthak',
+              regNo: '18BCE0814',
+              email: 'sarthakpranesh08@gmail.com',
+              block: 'L',
+              room: '735',
             },
           })
           .then((resp) => {
@@ -24,9 +28,12 @@ describe('Form Response Routes', () => {
     it('Incorrect Request Body ( Not passing correct fields )', async () => {
       await requestor.post('/addResponse')
           .send({
-            formName: 'test',
+            formName: 'hostel',
             responseFields: {
-              name: 'Sarthak',
+              username: 'Sarthak',
+              regNo: '18BCE0814',
+              email: 'sarthakpranesh08@gmail.com',
+              roo: '735',
             },
           })
           .then((resp) => {
@@ -39,7 +46,11 @@ describe('Form Response Routes', () => {
           .send({
             formName: 'testing as this is not there',
             responseFields: {
-              name: 'Sarthak',
+              username: 'Sarthak',
+              regNo: '18BCE0814',
+              email: 'sarthakpranesh08@gmail.com',
+              block: 'L',
+              room: '735',
             },
           })
           .then((resp) => {
@@ -50,9 +61,13 @@ describe('Form Response Routes', () => {
     it('Correct Request Body but with extra fields ( tampering )', async () => {
       await requestor.post('/addResponse')
           .send({
-            formName: 'test',
+            formName: 'hostel',
             responseFields: {
               username: 'Sarthak',
+              regNo: '18BCE0814',
+              email: 'sarthakpranesh08@gmail.com',
+              block: 'L',
+              room: '735',
               hacking: 'But would not be able too',
             },
           })
