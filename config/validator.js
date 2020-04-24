@@ -2,6 +2,7 @@ const validator = require('validator');
 
 const regNo = (reg) => {
   const regNoRegEx = new RegExp('[1-9]{2}[a-zA-Z]{3}[0-9]{4}');
+  console.log(reg.match(regNoRegEx));
   return reg.match(regNoRegEx)[0] === reg;
 };
 
