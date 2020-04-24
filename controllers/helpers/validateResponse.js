@@ -1,4 +1,7 @@
+/* eslint-disable max-len */
 /* eslint-disable prefer-const */
+const globalValidator = require('../../config/validator');
+
 const validateResponse = (formFields, responseFields) => {
   /*
   Here formFields contain the rules and is a array of objects.
@@ -9,7 +12,7 @@ const validateResponse = (formFields, responseFields) => {
       let pass = true;
       let attributeNames = [];
       formFields.forEach((attribute) => {
-        const {name, type, regEx} = attribute;
+        const {name, regEx} = attribute;
         attributeNames.push(name);
         // check the if the response has the field
         if (!responseFields[name]) {
@@ -17,19 +20,17 @@ const validateResponse = (formFields, responseFields) => {
           return;
         }
 
-        // check the type of the response
-        if (typeof(responseFields[name]).toLowerCase() !== type.toLowerCase()) {
-          pass = false;
-          return;
-        }
-
         // check with regEx
-        const reg = new RegExp(regEx);
-        if (responseFields[name].match(reg)[0] !== responseFields[name]) {
-          pass = false;
+        if (regEx === 'match') {
+          console.log(globalValidator.match(responseFields[name], attribute.checker));
+          pass = globalValidator.match(responseFields[name], attribute.checker);
+          return;
+        } else {
+          pass = globalValidator[regEx](responseFields[name]);
           return;
         }
       });
+
       const responseFieldNames = Object.keys(responseFields);
       responseFieldNames.forEach((field) => {
         if (!attributeNames.includes(field)) {

@@ -18,7 +18,7 @@ const formGenerationHandler = ({formName, fields} = {}) => {
       });
     } catch (err) {
       console.log(err);
-      const errMsg = mongoErrorHelper(err.code);
+      const errMsg = mongoErrorHelper(err.name);
       reject({
         statusCode: 1,
         status: err.code ? 400 : 500,
