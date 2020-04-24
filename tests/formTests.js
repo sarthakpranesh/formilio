@@ -19,13 +19,11 @@ describe('Form Tests', () => {
             fields: [
               {
                 name: 'Username',
-                type: 'String',
-                regEx: 'wer',
+                regEx: 'alpha',
               },
               {
                 name: 'Pass',
-                type: 'String',
-                regEx: 'wer',
+                regEx: 'alphaNumeric',
               },
             ],
           })
@@ -43,13 +41,11 @@ describe('Form Tests', () => {
             fields: [
               {
                 name: 'Username',
-                type: 'String',
-                regEx: 'wer',
+                regEx: 'alpha',
               },
               {
                 name: 'Pass',
-                type: 'String',
-                regEx: 'wer',
+                regEx: 'alphaNumeric',
               },
             ],
           })
@@ -67,13 +63,11 @@ describe('Form Tests', () => {
             fields: [
               {
                 name: 'Username',
-                type: 'String',
-                regEx: 'wer',
+                regEx: 'alpha',
               },
               {
                 name: 'Pass',
-                type: 'String',
-                regEx: 'wer',
+                regEx: 'alphaNumeric',
               },
             ],
           })
