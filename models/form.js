@@ -16,13 +16,22 @@ const FormSchema = new mongoose.Schema({
         type: String,
         required: true,
       },
-      type: {
-        type: String,
-        required: true,
-      },
       regEx: {
         type: String,
+        enum: [
+          'email',
+          'alpha',
+          'alphaNumeric',
+          'number',
+          'url',
+          'match',
+          'regNo',
+        ],
         required: true,
+      },
+      checker: {
+        type: String,
+        required: false,
       },
     },
   ],

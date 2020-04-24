@@ -1,5 +1,6 @@
+/* eslint-disable max-len */
 const errorCodes = {
-  11000: 'Form with name already present, please choose a different name.',
+  'ValidationError': 'We could not validate your request!',
 };
 
 const mongoErrorHelper = (errCode) => {
