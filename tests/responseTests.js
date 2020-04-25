@@ -11,7 +11,7 @@ describe('Form Response Routes', () => {
     it('Correct Request', async () => {
       await requestor.post('/addResponse')
           .send({
-            formName: 'hostel',
+            formName: '55dfc5a5081dcce1b5638911e321435e:2d9465a96f6e',
             responseFields: {
               username: 'Sarthak',
               regNo: '18BCE0814',
@@ -28,7 +28,7 @@ describe('Form Response Routes', () => {
     it('Incorrect Request Body ( Not passing correct fields )', async () => {
       await requestor.post('/addResponse')
           .send({
-            formName: 'hostel',
+            formName: '55dfc5a5081dcce1b5638911e321435e:2d9465a96f6e',
             responseFields: {
               username: 'Sarthak',
               regNo: '18BCE0814',
@@ -44,7 +44,7 @@ describe('Form Response Routes', () => {
     it('Incorrect Request Body ( Not passing correct form name )', async () => {
       await requestor.post('/addResponse')
           .send({
-            formName: 'testing as this is not there',
+            formName: '55dfc5a5081dcce1b5638911e321435e:2d9465a96f6w',
             responseFields: {
               username: 'Sarthak',
               regNo: '18BCE0814',
@@ -61,7 +61,7 @@ describe('Form Response Routes', () => {
     it('Correct Request Body but with extra fields ( tampering )', async () => {
       await requestor.post('/addResponse')
           .send({
-            formName: 'hostel',
+            formName: '55dfc5a5081dcce1b5638911e321435e:2d9465a96f6e',
             responseFields: {
               username: 'Sarthak',
               regNo: '18BCE0814',
