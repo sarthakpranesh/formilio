@@ -1,5 +1,6 @@
 const app = require('express')();
 const chalk = require('chalk');
+const crypto = require('../../controllers/helpers/crypto');
 
 const Form = require('../../models/form');
 
@@ -8,18 +9,18 @@ app.get('/requestForm', (req, res) => {
   if (!req.query.formName) {
     return res.sendStatus(400).end();
   }
-  Form.findByFormName(req.query.formName)
+  Form.findByFormName(crypto.decrypt(req.query.formName))
       .then((form) => {
         res.status(200).send({
           statusCode: 1,
-          form: form.fields,
+          form: form ? form.fields : [],
           error: null,
         });
         return;
       })
       .catch((err) => {
         console.log(err);
-        res.status(500).send({
+        res.status(400).send({
           statusCode: 9,
           form: null,
           error: err.message,
