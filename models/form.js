@@ -26,6 +26,7 @@ const FormSchema = new mongoose.Schema({
           'url',
           'match',
           'regNo',
+          'username',
         ],
         required: true,
       },
