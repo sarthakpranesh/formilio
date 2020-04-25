@@ -1,12 +1,14 @@
 /* eslint-disable prefer-promise-reject-errors */
 const Form = require('../../models/form');
 const mongoErrorHelper = require('../../controllers/helpers/MongoErrorHelper');
+const crypto = require('../helpers/crypto');
 
 const formGenerationHandler = ({formName, fields} = {}) => {
   return new Promise(async (resolve, reject) => {
     try {
       const newForm = new Form({
         formName,
+        url: process.env.frontEndURl + crypto.encrypt(formName),
         fields: fields,
       });
       await newForm.save();
