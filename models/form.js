@@ -6,6 +6,11 @@ const FormSchema = new mongoose.Schema({
     unique: true,
     required: true,
   },
+  url: {
+    type: 'String',
+    required: true,
+    unique: true,
+  },
   createOn: {
     type: Date,
     default: Date.now,
