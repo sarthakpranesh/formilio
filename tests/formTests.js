@@ -102,6 +102,30 @@ describe('Form Tests', () => {
           });
     });
   });
+
+  describe('Request Form Test', () => {
+    it('Correct Request', async () => {
+      await requestor.get('/requestForm')
+          .set('Authorization', token)
+          .query({
+            formName: '55dfc5a5081dcce1b5638911e321435e:2d9465a96f6e',
+          })
+          .then((resp) => {
+            assert.equal(resp.status, 200);
+          });
+    });
+
+    it('Incorrect Request ( Improper form name )', async () => {
+      await requestor.get('/requestForm')
+          .set('Authorization', token)
+          .query({
+            formName: '55dfc5a5081dcce1b5638911e321435e:2d946ed96f6e',
+          })
+          .then((resp) => {
+            assert.equal(resp.status, 400);
+          });
+    });
+  });
 });
 
 requestor.close();
