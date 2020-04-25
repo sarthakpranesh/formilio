@@ -2,8 +2,12 @@ const validator = require('validator');
 
 const regNo = (reg) => {
   const regNoRegEx = new RegExp('[1-9]{2}[a-zA-Z]{3}[0-9]{4}');
-  console.log(reg.match(regNoRegEx));
   return reg.match(regNoRegEx)[0] === reg;
+};
+
+const username = (username) => {
+  const regNoRegEx = new RegExp('[a-zA-Z0-9]{6,40}');
+  return username.match(regNoRegEx)[0] === username;
 };
 
 const globalValidator = {
@@ -14,6 +18,7 @@ const globalValidator = {
   url: validator.isURL,
   match: validator.matches,
   regNo,
+  username,
 };
 
 module.exports = globalValidator;

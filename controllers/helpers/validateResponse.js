@@ -9,35 +9,30 @@ const validateResponse = (formFields, responseFields) => {
   */
   return new Promise(async (resolve, reject) => {
     try {
-      let pass = true;
       let attributeNames = [];
-      formFields.forEach((attribute) => {
+      let pass = formFields.every((attribute) => {
         const {name, regEx} = attribute;
         attributeNames.push(name);
         // check the if the response has the field
         if (!responseFields[name]) {
-          pass = false;
-          return;
+          return false;
         }
 
         // check with regEx
         if (regEx === 'match') {
-          console.log(globalValidator.match(responseFields[name], attribute.checker));
-          pass = globalValidator.match(responseFields[name], attribute.checker);
-          return;
+          return globalValidator.match(responseFields[name], attribute.checker);
         } else {
-          pass = globalValidator[regEx](responseFields[name]);
-          return;
+          return globalValidator[regEx](responseFields[name]);
         }
       });
 
+      if (pass === false) {
+        resolve(pass);
+        return;
+      }
+
       const responseFieldNames = Object.keys(responseFields);
-      responseFieldNames.forEach((field) => {
-        if (!attributeNames.includes(field)) {
-          pass = false;
-          return;
-        }
-      });
+      pass = JSON.stringify(attributeNames) === JSON.stringify(responseFieldNames);
       resolve(pass);
     } catch (err) {
       console.log(err);
