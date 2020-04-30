@@ -11,13 +11,12 @@ describe('Form Response Routes', () => {
     it('Correct Request', async () => {
       await requestor.post('/addResponse')
           .send({
-            formName: '55dfc5a5081dcce1b5638911e321435e:2d9465a96f6e',
+            formName: '6e8adae11a6c45acdd4a58d097579ab4:832e88d4f563e1c8286309b009132a',
             responseFields: {
-              username: 'Sarthak',
-              regNo: '18BCE0814',
-              email: 'sarthakpranesh08@gmail.com',
-              block: 'L',
-              room: '735',
+              'First Name': 'Sarthak',
+              'Last Name': 'Pranesh',
+              'Email': 'sarthakpranesh08@gmail.com',
+              'Mobile Number': '1234567890',
             },
           })
           .then((resp) => {
@@ -28,12 +27,12 @@ describe('Form Response Routes', () => {
     it('Incorrect Request Body ( Not passing correct fields )', async () => {
       await requestor.post('/addResponse')
           .send({
-            formName: '55dfc5a5081dcce1b5638911e321435e:2d9465a96f6e',
+            formName: '6e8adae11a6c45acdd4a58d097579ab4:832e88d4f563e1c8286309b009132a',
             responseFields: {
-              username: 'Sarthak',
-              regNo: '18BCE0814',
-              email: 'sarthakpranesh08@gmail.com',
-              roo: '735',
+              'First Name': 'Sarthak',
+              'Last Name': 'Pranesh',
+              'Email': 'sarthakpranesh08@gmail.com',
+              'Mobile': '1234567890',
             },
           })
           .then((resp) => {
@@ -46,11 +45,10 @@ describe('Form Response Routes', () => {
           .send({
             formName: '55dfc5a5081dcce1b5638911e321435e:2d9465a96f6w',
             responseFields: {
-              username: 'Sarthak',
-              regNo: '18BCE0814',
-              email: 'sarthakpranesh08@gmail.com',
-              block: 'L',
-              room: '735',
+              'First Name': 'Sarthak',
+              'Last Name': 'Pranesh',
+              'Email': 'sarthakpranesh08@gmail.com',
+              'Mobile Number': '1234567890',
             },
           })
           .then((resp) => {
@@ -63,12 +61,11 @@ describe('Form Response Routes', () => {
           .send({
             formName: '55dfc5a5081dcce1b5638911e321435e:2d9465a96f6e',
             responseFields: {
-              username: 'Sarthak',
-              regNo: '18BCE0814',
-              email: 'sarthakpranesh08@gmail.com',
-              block: 'L',
-              room: '735',
-              hacking: 'But would not be able too',
+              'First Name': 'Sarthak',
+              'Last Name': 'Pranesh',
+              'Email': 'sarthakpranesh08@gmail.com',
+              'Mobile Number': '1234567890',
+              'Something': 'rtfgbvc',
             },
           })
           .then((resp) => {
