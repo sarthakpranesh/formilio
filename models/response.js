@@ -17,7 +17,6 @@ ResponseSchema.statics.findByFormName = (formName) => {
       const cleanedList = responseData.map((item) => {
         return item.toObject().any;
       });
-      console.log(cleanedList);
       resolve(cleanedList, Object.keys(cleanedList[0]));
     } catch (err) {
       console.log(err);
