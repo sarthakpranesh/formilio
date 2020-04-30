@@ -11,7 +11,8 @@ describe('Form Response Routes', () => {
     it('Correct Request', async () => {
       await requestor.post('/addResponse')
           .send({
-            formName: '6e8adae11a6c45acdd4a58d097579ab4:832e88d4f563e1c8286309b009132a',
+            formName:
+            '6e8adae11a6c45acdd4a58d097579ab4:832e88d4f563e1c8286309b009132a',
             responseFields: {
               'First Name': 'Sarthak',
               'Last Name': 'Pranesh',
@@ -27,7 +28,8 @@ describe('Form Response Routes', () => {
     it('Incorrect Request Body ( Not passing correct fields )', async () => {
       await requestor.post('/addResponse')
           .send({
-            formName: '6e8adae11a6c45acdd4a58d097579ab4:832e88d4f563e1c8286309b009132a',
+            formName:
+            '6e8adae11a6c45acdd4a58d097579ab4:832e88d4f563e1c8286309b009132a',
             responseFields: {
               'First Name': 'Sarthak',
               'Last Name': 'Pranesh',
