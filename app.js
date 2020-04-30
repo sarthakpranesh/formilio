@@ -26,6 +26,7 @@ const addResponse = require('./routes/response/submitResponse');
 const requestForm = require('./routes/forms/requestForm');
 const getAllForm = require('./routes/forms/getAllForm');
 const getFormResponse = require('./routes/forms/getFormResponse');
+const getValidator = require('./routes/forms/getValidators');
 
 // importing layer middleware
 const validateClient = require('./middleware/form/validateClient');
@@ -36,6 +37,7 @@ app.use(connectClient);
 app.use(requestForm);
 app.use(addResponse);
 app.use(validateClient);
+app.use(getValidator);
 app.use(createForm);
 app.use(deleteForm);
 app.use(getAllForm);
