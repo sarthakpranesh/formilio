@@ -14,6 +14,10 @@ ResponseSchema.statics.findByFormName = (formName) => {
   return new Promise(async (resolve, reject) => {
     try {
       const responseData = await Response.find({formName});
+      if (responseData.length === 0) {
+        resolve([{Empty: 'This form has no responses yet'}], ['Empty']);
+        return;
+      }
       const cleanedList = responseData.map((item) => {
         return item.toObject().any;
       });
