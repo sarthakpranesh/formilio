@@ -39,13 +39,15 @@ const validateResponse = (formFields, responseFields) => {
         }
       });
 
-      if (error !== {}) {
+      if (error.length !== 0) {
         resolve(error);
         return;
       }
 
       const responseFieldNames = Object.keys(responseFields);
-      if (JSON.stringify(attributeNames) === JSON.stringify(responseFieldNames)) {
+      let tmp = JSON.stringify(attributeNames) === JSON.stringify(responseFieldNames);
+      console.log(tmp);
+      if (!tmp) {
         error.push('Please do not pass extra fields');
       }
       resolve(error);

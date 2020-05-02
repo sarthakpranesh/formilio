@@ -38,7 +38,27 @@ describe('Form Response Routes', () => {
             },
           })
           .then((resp) => {
-            assert.equal(resp.status, 400);
+            assert.equal(resp.body.error.length !== 0, true);
+            assert.equal(resp.status, 200);
+          });
+    });
+
+    it('Correct Request Body but with extra fields ( tampering )', async () => {
+      await requestor.post('/addResponse')
+          .send({
+            formName:
+            '6e8adae11a6c45acdd4a58d097579ab4:832e88d4f563e1c8286309b009132a',
+            responseFields: {
+              'First Name': 'Sarthak',
+              'Last Name': 'Pranesh',
+              'Email': 'sarthakpranesh08@gmail.com',
+              'Mobile Number': '1234567890',
+              'Something': 'rtfgbvc',
+            },
+          })
+          .then((resp) => {
+            assert.equal(resp.body.error.length !== 0, true);
+            assert.equal(resp.status, 200);
           });
     });
 
@@ -54,23 +74,7 @@ describe('Form Response Routes', () => {
             },
           })
           .then((resp) => {
-            assert.equal(resp.status, 400);
-          });
-    });
-
-    it('Correct Request Body but with extra fields ( tampering )', async () => {
-      await requestor.post('/addResponse')
-          .send({
-            formName: '55dfc5a5081dcce1b5638911e321435e:2d9465a96f6e',
-            responseFields: {
-              'First Name': 'Sarthak',
-              'Last Name': 'Pranesh',
-              'Email': 'sarthakpranesh08@gmail.com',
-              'Mobile Number': '1234567890',
-              'Something': 'rtfgbvc',
-            },
-          })
-          .then((resp) => {
+            assert.equal(resp.body.statusCode, 8);
             assert.equal(resp.status, 400);
           });
     });

@@ -29,8 +29,8 @@ const addResponseHandler = ({formName, responseFields} = {}) => {
     } catch (err) {
       console.log(err);
       reject({
-        status: 500,
-        statusCode: 9,
+        status: err.message === 'Form not found' ? 400 : 500,
+        statusCode: err.message === 'Form not found' ? 8 : 9,
         error: err.message,
         isResponseAdded: false,
       });
