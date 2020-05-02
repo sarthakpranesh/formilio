@@ -60,7 +60,7 @@ FormSchema.statics.findByFormName = (formName) => {
       if (!form) {
         throw new Error('Form not found');
       }
-      resolve(form);
+      resolve(form.toObject());
     } catch (err) {
       console.log(err);
       reject(err);
