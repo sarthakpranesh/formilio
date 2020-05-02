@@ -9,10 +9,14 @@ const addResponseHandler = ({formName, responseFields} = {}) => {
   return new Promise(async (resolve, reject) => {
     try {
       const form = await Form.findByFormName(formName);
-      const pass = await validateResponse(form.fields, responseFields);
-      console.log(pass);
-      if (!pass) {
-        throw new Error('Bad request');
+      const error = await validateResponse(form.fields, responseFields);
+      if (error.length !== 0) {
+        resolve({
+          status: 200,
+          statusCode: 2, // user input error
+          error,
+          isResponseAdded: false,
+        });
       }
       const response = new Response({formName: formName, any: responseFields});
       await response.save();
@@ -23,9 +27,10 @@ const addResponseHandler = ({formName, responseFields} = {}) => {
         isResponseAdded: true,
       });
     } catch (err) {
+      console.log(err);
       reject({
-        status: err.message === 'Bad request' || 'Form not found' ? 400 : 500,
-        statusCode: 8,
+        status: 500,
+        statusCode: 9,
         error: err.message,
         isResponseAdded: false,
       });
