@@ -1,9 +1,22 @@
 const crypto = require('../../controllers/helpers/crypto');
+const GoogleRecaptcha = require('google-recaptcha');
 
 const validateResponse = (req, res, next) => {
-  console.log(crypto.decrypt(req.body.formName));
-  req.body.formName = crypto.decrypt(req.body.formName);
-  next();
+  const token = req.body.token;
+  if ([undefined, null, ''].includes(token)) {
+    console.log('Token not defined');
+    return res.sendStatus(403).end();
+  }
+  const googleRecaptcha =
+    new GoogleRecaptcha({secret: process.env.captcha_secret});
+  googleRecaptcha.verify({response: token}, async (error)=>{
+    if (error) {
+      console.log(error);
+      return res.sendStatus(403).end();
+    }
+    req.body.formName = crypto.decrypt(req.body.formName);
+    next();
+  });
 };
 
 module.exports = validateResponse;
