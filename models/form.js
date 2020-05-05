@@ -1,10 +1,24 @@
 const mongoose = require('mongoose');
 
+// importing available validators
+const globalValidators = require('../config/validator');
+
 const FormSchema = new mongoose.Schema({
   formName: {
     type: String,
     unique: true,
     required: true,
+    minlength: [6, 'Form name too short'],
+    maxlength: [40, 'Form name too long'],
+  },
+  description: {
+    type: String,
+    default: 'Not Provided',
+    minlength: [
+      6,
+      'Description needs to be at least more then 6 characters long!',
+    ],
+    maxlength: [400, 'Description cannot have more then 400 characters!'],
   },
   url: {
     type: 'String',
@@ -23,16 +37,7 @@ const FormSchema = new mongoose.Schema({
       },
       regEx: {
         type: String,
-        enum: [
-          'email',
-          'alpha',
-          'alphaNumeric',
-          'number',
-          'url',
-          'match',
-          'regNo',
-          'username',
-        ],
+        enum: Object.keys(globalValidators),
         required: true,
       },
       checker: {

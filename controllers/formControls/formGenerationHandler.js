@@ -3,11 +3,12 @@ const Form = require('../../models/form');
 const mongoErrorHelper = require('../../controllers/helpers/MongoErrorHelper');
 const crypto = require('../helpers/crypto');
 
-const formGenerationHandler = ({formName, fields} = {}) => {
+const formGenerationHandler = ({formName, fields, description} = {}) => {
   return new Promise(async (resolve, reject) => {
     try {
       const newForm = new Form({
         formName,
+        description,
         url: process.env.frontEndURl + crypto.encrypt(formName),
         fields: fields,
       });
@@ -19,12 +20,11 @@ const formGenerationHandler = ({formName, fields} = {}) => {
         isFormCreated: true,
       });
     } catch (err) {
-      console.log(err);
-      const errMsg = mongoErrorHelper(err.name);
+      const errMsg = mongoErrorHelper(err);
       reject({
         statusCode: 1,
-        status: err.code ? 400 : 500,
-        error: errMsg,
+        status: errMsg ? 400 : 500,
+        error: errMsg ? errMsg : err.message,
         isFormCreated: false,
       });
     }

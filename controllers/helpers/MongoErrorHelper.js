@@ -1,11 +1,19 @@
 /* eslint-disable max-len */
-const errorCodes = {
-  'ValidationError': 'We could not validate your request!',
+const errorNames = {
+  'ValidationError': (error) => {
+    const allErrors = Object.keys(error.errors);
+    return allErrors.map((errName) => {
+      return error.errors[errName].message;
+    });
+  },
+  'MongoError': () => {
+    return 'Form with name already exists';
+  },
 };
 
-const mongoErrorHelper = (errCode) => {
+const mongoErrorHelper = (err) => {
   try {
-    return errorCodes[errCode];
+    return errorNames[err.name](err);
   } catch (err) {
     console.log('Error in MongoErrorHelper');
     return 'Undefined Error';
