@@ -7,8 +7,8 @@ const formGenerationHandler = ({formName, fields, description} = {}) => {
   return new Promise(async (resolve, reject) => {
     try {
       const newForm = new Form({
-        formName,
-        description,
+        formName: formName.trim(),
+        description: description.trim(),
         url: process.env.frontEndURl + crypto.encrypt(formName),
         fields: fields,
       });
