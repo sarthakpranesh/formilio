@@ -58,6 +58,26 @@ FormSchema.post('save', function(doc, next) {
   next();
 });
 
+FormSchema.statics.getAllForms = () => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const form = await Form.find({});
+      const cleanedForm = form.map((form) => {
+        const formObj = form.toObject();
+        return {
+          formName: formObj.formName,
+          description: formObj.description,
+          _id: formObj._id,
+        };
+      });
+      resolve(cleanedForm);
+    } catch (err) {
+      console.log(err);
+      reject(err);
+    }
+  });
+};
+
 FormSchema.statics.findByFormName = (formName) => {
   return new Promise(async (resolve, reject) => {
     try {
