@@ -11,7 +11,7 @@ const addResponseHandler = ({formName, responseFields} = {}) => {
       const form = await Form.findByFormName(formName);
       const error = await validateResponse(form.fields, responseFields);
       if (error.length !== 0) {
-        resolve({
+        return resolve({
           status: 200,
           statusCode: 2, // user input error
           error,
@@ -20,7 +20,7 @@ const addResponseHandler = ({formName, responseFields} = {}) => {
       }
       const response = new Response({formName: formName, any: responseFields});
       await response.save();
-      resolve({
+      return resolve({
         status: 200,
         statusCode: 1,
         error: null,
