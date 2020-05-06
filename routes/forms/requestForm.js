@@ -11,18 +11,27 @@ app.get('/requestForm', (req, res) => {
   }
   Form.findByFormName(crypto.decrypt(req.query.formName))
       .then((form) => {
-        res.status(200).send({
+        if (!form) {
+          return res.status(200).send({
+            statusCode: 1,
+            form: [],
+            wasFormFound: false,
+            error: null,
+          });
+        }
+        return res.status(200).send({
           statusCode: 1,
           form: form ? form.fields : [],
+          wasFormFound: true,
           error: null,
         });
-        return;
       })
       .catch((err) => {
         console.log(err);
         res.status(400).send({
-          statusCode: 9,
+          statusCode: 8,
           form: null,
+          wasFormFound: false,
           error: err.message,
         });
         return;

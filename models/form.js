@@ -83,9 +83,9 @@ FormSchema.statics.findByFormName = (formName) => {
     try {
       const form = await Form.findOne({formName});
       if (!form) {
-        throw new Error('Form not found');
+        return resolve(null);
       }
-      resolve(form.toObject());
+      return resolve(form.toObject());
     } catch (err) {
       console.log(err);
       reject(err);
