@@ -11,11 +11,11 @@ const clientSecretKeyValidator = (req, res, next) => {
     }
   }
 
-  res.status(400).send({
-    status: 8,
-    statusMessage: 'Bad Request',
-    payload: null,
-    error: null,
+  return res.status(403).send({
+    statusCode: 8,
+    status: 403,
+    token: null,
+    error: 'Invalid Secret!',
   });
 };
 

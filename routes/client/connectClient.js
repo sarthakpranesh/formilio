@@ -11,8 +11,8 @@ const {connectWithClient} = require('../../controllers/clientControls/index');
 app.post('/connectClient', adminSecretKeyValidator, (req, res) => {
   console.log(chalk.yellow('Create Admin Request'));
   connectWithClient(req.clientKey)
-      .then((resp) => res.status(200).send(resp))
-      .catch((err) => res.status(500).send(err));
+      .then((resp) => res.status(resp.status).send(resp))
+      .catch((err) => res.status(err.status).send(err));
 });
 
 module.exports = app;
