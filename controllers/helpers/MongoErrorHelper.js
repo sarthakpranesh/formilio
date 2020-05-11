@@ -6,8 +6,8 @@ const errorNames = {
       return error.errors[errName].message;
     });
   },
-  'MongoError': () => {
-    return 'Form with name already exists';
+  'MongoError': (error) => {
+    return `${Object.keys(error.keyValue)} already exists`;
   },
 };
 
@@ -16,7 +16,7 @@ const mongoErrorHelper = (err) => {
     return errorNames[err.name](err);
   } catch (err) {
     console.log('Error in MongoErrorHelper');
-    return 'Undefined Error';
+    return false;
   }
 };
 
