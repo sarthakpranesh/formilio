@@ -20,6 +20,7 @@ app.use((req, res, next) => {
 
 // importing routes
 const connectClient = require('./routes/client/connectClient');
+const createUser = require('./routes/user/createUser');
 const createForm = require('./routes/forms/createForm');
 const deleteForm = require('./routes/forms/deleteForm');
 const getAllForm = require('./routes/forms/getAllForm');
@@ -38,6 +39,7 @@ app.use(requestForm);
 app.use(addResponse);
 app.use(connectClient);
 app.use(validateClient);
+app.use(createUser);
 app.use(getValidator);
 app.use(createForm);
 app.use(deleteForm);
