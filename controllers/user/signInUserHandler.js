@@ -1,13 +1,15 @@
 /* eslint-disable max-len */
 /* eslint-disable prefer-promise-reject-errors */
 const User = require('../../models/user');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 const signInUserHandler = (email, password) => {
   return new Promise( async (resolve, reject) => {
     try {
       const user = await User.findUserWithEmail(email);
-      if (password === user.password) {
+      const check = bcrypt.compareSync(password, user.password);
+      if (!!check) {
         const token = jwt.sign({_id: user._id}, process.env.jwt_signature);
         return resolve({
           status: 200,
