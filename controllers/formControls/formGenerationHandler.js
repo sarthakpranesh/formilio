@@ -3,7 +3,7 @@ const Form = require('../../models/form');
 const mongoErrorHelper = require('../../controllers/helpers/MongoErrorHelper');
 const crypto = require('../helpers/crypto');
 
-const formGenerationHandler = ({formName, fields, description} = {}) => {
+const formGenerationHandler = (formName, fields, description) => {
   return new Promise(async (resolve, reject) => {
     try {
       const newForm = new Form({

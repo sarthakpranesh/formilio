@@ -1,12 +1,15 @@
 const validator = require('validator');
+const Cryptr = require('cryptr');
+const cryptr = new Cryptr(process.env.admin_secret_key);
 
 const validateCreateUserRequest = (req, res, next) => {
   try {
     const email = req.body.email;
     const password = req.body.password;
+    console.log(cryptr.decrypt(password));
     if (validator.isEmail(email) && ![undefined, null, ''].includes(password)) {
       req.email = email;
-      req.password = password;
+      req.password = cryptr.decrypt(password);
       return next();
     }
     return res.status(400).send({
