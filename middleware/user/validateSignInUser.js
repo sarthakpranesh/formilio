@@ -9,6 +9,7 @@ const validateSignInUser = (req, res, next) => {
       req.password = Base64.decode(password);
       return next();
     }
+    console.log(req.body);
     return res.status(400).send({
       status: 400,
       statusCode: 8,
