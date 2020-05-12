@@ -21,7 +21,6 @@ app.use((req, res, next) => {
 // importing routes
 const requestForm = require('./routes/forms/requestForm');
 const addResponse = require('./routes/response/submitResponse');
-// const connectClient = require('./routes/client/connectClient');
 const createUser = require('./routes/user/createUser');
 const signInUser = require('./routes/user/signInUser');
 const createForm = require('./routes/forms/createForm');
@@ -33,7 +32,6 @@ const getValidator = require('./routes/forms/getValidators');
 
 
 // importing layer middleware
-// const validateClient = require('./middleware/form/validateClient');
 const validateUserToken = require('./middleware/user/validateUserToken');
 
 // using routes and client specific middleware
