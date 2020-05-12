@@ -5,6 +5,7 @@ const User = require('../../models/user');
 const validateUserToken = async (req, res, next) => {
   try {
     const token = req.headers.authorization;
+    console.log('User token: ', token);
     if (!!token) {
       const verify = jwt.verify(token.replace('Bearer ', ''), process.env.jwt_signature);
       if (!!verify) {
@@ -16,7 +17,7 @@ const validateUserToken = async (req, res, next) => {
     }
     return res.status(400).end();
   } catch (err) {
-    console.log(err.message);
+    console.log('Error: ', err.message);
     return res.sendStatus(500).end();
   }
 };
