@@ -12,7 +12,7 @@ const FormSchema = new mongoose.Schema({
     maxlength: [40, 'Form name too long'],
   },
   userId: {
-    type: String,
+    type: mongoose.ObjectId,
     required: true,
   },
   description: {

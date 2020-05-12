@@ -2,16 +2,16 @@
 const Form = require('../../models/form');
 const Response = require('../../models/response');
 
-const formDeleteHandler = ({formName} = {}) => {
+const formDeleteHandler = (fid) => {
   return new Promise(async (resolve, reject) => {
     try {
-      await Form.findOneAndRemove({formName});
-      await Response.deleteMany({formName});
+      await Form.findByIdAndDelete({_id: fid});
+      await Response.deleteMany({_id: fid});
       resolve({
         statusCode: 1,
         status: 200,
         error: null,
-        isDeleted: true,
+        isFormDeleted: true,
       });
     } catch (err) {
       console.log(err);
@@ -19,7 +19,7 @@ const formDeleteHandler = ({formName} = {}) => {
         statusCode: 9,
         status: err.code ? 400 : 500,
         error: err.message,
-        isDeleted: false,
+        isFormDeleted: false,
       });
     }
   });
