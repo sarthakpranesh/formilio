@@ -22,6 +22,8 @@ app.get('/requestForm', (req, res) => {
         return res.status(200).send({
           statusCode: 1,
           form: form ? form.fields : [],
+          formName: form.formName ? form.formName : null,
+          description: form.description ? form.description : null,
           wasFormFound: true,
           error: null,
         });
