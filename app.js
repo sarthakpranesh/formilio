@@ -38,8 +38,6 @@ const validateUserToken = require('./middleware/user/validateUserToken');
 app.use(cors());
 app.use(requestForm);
 app.use(addResponse);
-// app.use(connectClient);
-// app.use(validateClient);
 app.use(createUser);
 app.use(signInUser);
 app.use(validateUserToken);

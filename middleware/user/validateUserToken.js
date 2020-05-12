@@ -8,11 +8,9 @@ const validateUserToken = async (req, res, next) => {
     if (!!token) {
       const verify = jwt.verify(token.replace('Bearer ', ''), process.env.jwt_signature);
       if (!!verify) {
-        const user = await User.findUserWithEmail(verify.email);
-        if (user.password === verify.password) {
-          req.user = user;
-          return next();
-        }
+        const user = await User.findById({_id: verify._id});
+        req.user = user;
+        return next();
       }
       return res.status(403).end();
     }

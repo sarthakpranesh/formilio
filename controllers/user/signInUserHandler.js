@@ -8,7 +8,7 @@ const signInUserHandler = (email, password) => {
     try {
       const user = await User.findUserWithEmail(email);
       if (password === user.password) {
-        const token = jwt.sign({email: user.email, password: user.password}, process.env.jwt_signature);
+        const token = jwt.sign({_id: user._id}, process.env.jwt_signature);
         return resolve({
           status: 200,
           statusCode: 1,

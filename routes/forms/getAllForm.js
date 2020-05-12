@@ -5,8 +5,8 @@ const app = require('express')();
 const getAllFormHandler = require('../../controllers/formControls/getAllFormHandler');
 
 app.get('/auth/getAllForm', (req, res) => {
-  console.log(req.clientToken);
-  getAllFormHandler()
+  console.log('All forms called by: ', req.user.email);
+  getAllFormHandler(req.user._id)
       .then((resp) => res.status(200).send(resp))
       .catch((err) => res.status(err.status).send(err));
 });
