@@ -3,11 +3,12 @@ const Form = require('../../models/form');
 const mongoErrorHelper = require('../../controllers/helpers/MongoErrorHelper');
 const crypto = require('../helpers/crypto');
 
-const formGenerationHandler = (formName, fields, description) => {
+const formGenerationHandler = (formName, fields, description, user) => {
   return new Promise(async (resolve, reject) => {
     try {
       const newForm = new Form({
         formName: formName.trim(),
+        userId: user._id,
         description: description.trim(),
         url: process.env.frontEndURl + crypto.encrypt(formName),
         fields: fields,

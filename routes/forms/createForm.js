@@ -9,8 +9,8 @@ const validateCreateForm = require('../../middleware/form/validateCreateForm');
 const formGenerationHandler = require('../../controllers/formControls/formGenerationHandler');
 
 app.post('/auth/createForm', validateCreateForm, (req, res) => {
-  console.log(chalk.yellow('Create Form requested'));
-  formGenerationHandler(req.formName, req.fields, req.description)
+  console.log(chalk.yellow('Create Form requested by: ', req.user.email));
+  formGenerationHandler(req.formName, req.fields, req.description, req.user)
       .then((resp) => res.status(200).send(resp))
       .catch((err) => res.status(err.status).send(err));
 });

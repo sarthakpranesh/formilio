@@ -11,6 +11,10 @@ const FormSchema = new mongoose.Schema({
     minlength: [6, 'Form name too short'],
     maxlength: [40, 'Form name too long'],
   },
+  userId: {
+    type: String,
+    required: true,
+  },
   description: {
     type: String,
     default: 'Not Provided',
