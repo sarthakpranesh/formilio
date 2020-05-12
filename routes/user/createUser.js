@@ -8,7 +8,7 @@ require('../../middleware/user/validateCreateUserRequest');
 const createUserHandler = require('../../controllers/user/createUserHandler');
 
 app.post('/createUser', validateCreateUserRequest, (req, res) => {
-  console.log(req.clientToken);
+  console.log('Create user request from: ', req.email);
   createUserHandler(req.email, req.password)
       .then((resp) => res.status(200).send(resp))
       .catch((err) => res.status(err.status).send(err));

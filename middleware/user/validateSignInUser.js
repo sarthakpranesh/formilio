@@ -1,5 +1,4 @@
-const Cryptr = require('cryptr');
-const cryptr = new Cryptr(process.env.SERVER_KEY);
+const Base64 = require('js-base64').Base64;
 
 const validateSignInUser = (req, res, next) => {
   try {
@@ -7,7 +6,7 @@ const validateSignInUser = (req, res, next) => {
     const password = req.body.password;
     if (!!email && !!password) {
       req.email = email;
-      req.password = cryptr.decrypt(password);
+      req.password = Base64.decode(password);
       return next();
     }
     return res.status(400).send({
