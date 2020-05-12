@@ -4,10 +4,7 @@ const {parse} = require('json2csv');
 
 const Response = require('../../models/response');
 
-// importing middleware
-const validateGetForm = require('../../middleware/form/validateGetForm');
-
-app.get('/auth/getResponse', validateGetForm, (req, res) => {
+app.get('/auth/getResponse', (req, res) => {
   console.log('Form Download request by: ', req.user.email);
   console.log('Form id: ', req.fid);
   Response.findByFormId({_id: req.fid})

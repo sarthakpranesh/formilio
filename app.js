@@ -33,6 +33,7 @@ const getValidator = require('./routes/forms/getValidators');
 
 // importing layer middleware
 const validateUserToken = require('./middleware/user/validateUserToken');
+const validateGetForm = require('./middleware/form/validateGetForm');
 
 // using routes and client specific middleware
 app.use(cors());
@@ -45,6 +46,7 @@ app.use(getValidator);
 app.use(createForm);
 app.use(deleteForm);
 app.use(getAllForm);
+app.use(validateGetForm);
 app.use(getForm);
 app.use(getFormResponse);
 

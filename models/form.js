@@ -81,10 +81,10 @@ FormSchema.statics.getAllUserForms = (userId) => {
   });
 };
 
-FormSchema.statics.findByFormName = (formName) => {
+FormSchema.statics.findByFormId = (fid) => {
   return new Promise(async (resolve, reject) => {
     try {
-      const form = await Form.findOne({formName});
+      const form = await Form.findOne({_id: fid});
       if (!form) {
         return resolve(null);
       }
