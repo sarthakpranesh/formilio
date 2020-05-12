@@ -52,7 +52,5 @@ app.use(getFormResponse);
 
 app.listen(port, () => {
   console.log(chalk.green('Server started successfully: ', port));
-  const Base64 = require('js-base64').Base64;
-  console.log(Base64.encode('qwertyuiop'));
 });
 

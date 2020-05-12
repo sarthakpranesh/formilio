@@ -13,7 +13,7 @@ const ResponseSchema = new mongoose.Schema({
 ResponseSchema.statics.findByFormId = (fid) => {
   return new Promise(async (resolve, reject) => {
     try {
-      const responseData = await Response.find({_id: fid});
+      const responseData = await Response.find({fid: fid});
       if (responseData.length === 0) {
         resolve([{Empty: 'This form has no responses yet'}], ['Empty']);
         return;

@@ -7,7 +7,7 @@ const Response = require('../../models/response');
 app.get('/auth/getResponse', (req, res) => {
   console.log('Form Download request by: ', req.user.email);
   console.log('Form id: ', req.fid);
-  Response.findByFormId({_id: req.fid})
+  Response.findByFormId(req.fid)
       .then(async (data, formFields) => {
         try {
           const csv = parse(data, {formFields});
