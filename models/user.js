@@ -17,6 +17,17 @@ const UserSchema = new mongoose.Schema({
   },
 });
 
+UserSchema.statics.findUserWithEmail = (email) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const user = await User.findOne({email});
+      resolve(user.toObject());
+    } catch (err) {
+      reject(err.message);
+    }
+  });
+};
+
 const User = mongoose.model('user', UserSchema);
 
 module.exports = User;

@@ -10,10 +10,10 @@ const ResponseSchema = new mongoose.Schema({
   strict: false,
 });
 
-ResponseSchema.statics.findByFormName = (formName) => {
+ResponseSchema.statics.findByFormId = (fid) => {
   return new Promise(async (resolve, reject) => {
     try {
-      const responseData = await Response.find({formName});
+      const responseData = await Response.find({_id: fid});
       if (responseData.length === 0) {
         resolve([{Empty: 'This form has no responses yet'}], ['Empty']);
         return;

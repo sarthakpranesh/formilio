@@ -1,10 +1,10 @@
 /* eslint-disable prefer-promise-reject-errors */
 const Form = require('../../models/form');
 
-const getAllFormHandler = () => {
+const getAllFormHandler = (userId) => {
   return new Promise(async (resolve, reject) => {
     try {
-      const forms = await Form.getAllForms();
+      const forms = await Form.getAllUserForms(userId);
       resolve({
         status: 200,
         statusCode: 1,

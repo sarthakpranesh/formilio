@@ -1,10 +1,10 @@
 /* eslint-disable prefer-promise-reject-errors */
 const Form = require('../../models/form');
 
-const getFormHandler = (formName) => {
+const getFormHandler = (fid) => {
   return new Promise(async (resolve, reject) => {
     try {
-      const form = await Form.findByFormName(formName);
+      const form = await Form.findByFormId(fid);
       return resolve({
         statusCode: 1,
         form: form ? form : {},

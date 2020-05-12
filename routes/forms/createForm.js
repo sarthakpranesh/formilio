@@ -2,18 +2,15 @@
 const app = require('express')();
 const chalk = require('chalk');
 
+// importing middleware
+const validateCreateForm = require('../../middleware/form/validateCreateForm');
+
 // importing controllers
 const formGenerationHandler = require('../../controllers/formControls/formGenerationHandler');
 
-app.post('/auth/createForm', (req, res) => {
-  console.log(chalk.yellow('Create Form requested'));
-  if (!req.body.formName || !req.body.fields) {
-    return res.sendStatus(400).end();
-  }
-  if (!req.body.fields[0]) {
-    return res.sendStatus(400).end();
-  }
-  formGenerationHandler(req.body)
+app.post('/auth/createForm', validateCreateForm, (req, res) => {
+  console.log(chalk.yellow('Create Form requested by: ', req.user.email));
+  formGenerationHandler(req.formName, req.fields, req.description, req.user)
       .then((resp) => res.status(200).send(resp))
       .catch((err) => res.status(err.status).send(err));
 });

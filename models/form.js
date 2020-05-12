@@ -6,10 +6,13 @@ const globalValidators = require('../config/validator');
 const FormSchema = new mongoose.Schema({
   formName: {
     type: String,
-    unique: true,
     required: true,
     minlength: [6, 'Form name too short'],
     maxlength: [40, 'Form name too long'],
+  },
+  userId: {
+    type: mongoose.ObjectId,
+    required: true,
   },
   description: {
     type: String,
@@ -58,10 +61,10 @@ FormSchema.post('save', function(doc, next) {
   next();
 });
 
-FormSchema.statics.getAllForms = () => {
+FormSchema.statics.getAllUserForms = (userId) => {
   return new Promise(async (resolve, reject) => {
     try {
-      const form = await Form.find({});
+      const form = await Form.find({userId});
       const cleanedForm = form.map((form) => {
         const formObj = form.toObject();
         return {
@@ -78,10 +81,10 @@ FormSchema.statics.getAllForms = () => {
   });
 };
 
-FormSchema.statics.findByFormName = (formName) => {
+FormSchema.statics.findByFormId = (fid) => {
   return new Promise(async (resolve, reject) => {
     try {
-      const form = await Form.findOne({formName});
+      const form = await Form.findOne({_id: fid});
       if (!form) {
         return resolve(null);
       }
