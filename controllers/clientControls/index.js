@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const connectWithClient = (key) => {
   return new Promise((resolve, reject) => {
     try {
-      const token = jwt.sign(key, process.env.jwt_signature);
+      const token = jwt.sign(key, process.env.JWT_KEY);
       resolve({
         statusCode: 1,
         status: 200,

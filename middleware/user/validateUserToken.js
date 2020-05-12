@@ -7,7 +7,7 @@ const validateUserToken = async (req, res, next) => {
     const token = req.headers.authorization;
     console.log('User token: ', token);
     if (!!token) {
-      const verify = jwt.verify(token.replace('Bearer ', ''), process.env.jwt_signature);
+      const verify = jwt.verify(token.replace('Bearer ', ''), process.env.JWT_KEY);
       if (!!verify) {
         const user = await User.findById({_id: verify._id});
         req.user = user;

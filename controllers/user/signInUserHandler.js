@@ -10,7 +10,7 @@ const signInUserHandler = (email, password) => {
       const user = await User.findUserWithEmail(email);
       const check = bcrypt.compareSync(password, user.password);
       if (!!check) {
-        const token = jwt.sign({_id: user._id}, process.env.jwt_signature);
+        const token = jwt.sign({_id: user._id}, process.env.JWT_KEY);
         return resolve({
           status: 200,
           statusCode: 1,

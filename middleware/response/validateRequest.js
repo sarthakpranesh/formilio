@@ -8,7 +8,7 @@ const validateResponse = (req, res, next) => {
     return res.sendStatus(403).end();
   }
   const googleRecaptcha =
-    new GoogleRecaptcha({secret: process.env.captcha_secret});
+    new GoogleRecaptcha({secret: process.env.RECAPTCHA_KEY});
   googleRecaptcha.verify({response: token}, async (error)=>{
     if (error) {
       console.log(error);

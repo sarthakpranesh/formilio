@@ -4,7 +4,6 @@ const chalk = require('chalk');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const port = process.env.PORT;
-const Cryptr = require('cryptr');
 
 // initializing mongo connection
 require('./config/mongoDb');
@@ -53,7 +52,5 @@ app.use(getFormResponse);
 
 app.listen(port, () => {
   console.log(chalk.green('Server started successfully: ', port));
-  const cryptr = new Cryptr(process.env.admin_secret_key);
-  console.log(cryptr.encrypt('asdfghjkl'));
 });
 

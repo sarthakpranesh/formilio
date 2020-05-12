@@ -1,5 +1,5 @@
 const Cryptr = require('cryptr');
-const cryptr = new Cryptr(process.env.admin_secret_key);
+const cryptr = new Cryptr(process.env.SERVER_KEY);
 
 const validateSignInUser = (req, res, next) => {
   try {

@@ -10,7 +10,7 @@ const formGenerationHandler = (formName, fields, description, user) => {
         formName: formName.trim(),
         userId: user._id,
         description: description.trim(),
-        url: process.env.frontEndURl + crypto.encrypt(formName),
+        url: process.env.FRONTEND_BASEURL + crypto.encrypt(formName),
         fields: fields,
       });
       await newForm.save();

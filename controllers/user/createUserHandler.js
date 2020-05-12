@@ -1,7 +1,7 @@
 /* eslint-disable prefer-promise-reject-errors */
 const User = require('../../models/user');
 const bcrypt = require('bcryptjs');
-const salt = bcrypt.genSaltSync(Number(process.env.bcrypt_salt));
+const salt = bcrypt.genSaltSync(Number(process.env.BCRYPT_SALT));
 
 const mongoErrorHelper = require('../../controllers/helpers/MongoErrorHelper');
 
