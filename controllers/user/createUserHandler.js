@@ -1,5 +1,8 @@
 /* eslint-disable prefer-promise-reject-errors */
 const User = require('../../models/user');
+const bcrypt = require('bcryptjs');
+const salt = bcrypt.genSaltSync(Number(process.env.bcrypt_salt));
+
 const mongoErrorHelper = require('../../controllers/helpers/MongoErrorHelper');
 
 const createUserHandler = (email, password) => {
@@ -7,7 +10,7 @@ const createUserHandler = (email, password) => {
     try {
       const user = new User({
         email: email.trim(),
-        password: password.trim(),
+        password: bcrypt.hashSync(password, salt),
       });
       await user.save();
       resolve({

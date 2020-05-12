@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/sarthakpranesh/formilio#readme",
   "dependencies": {
-    "bcrypt": "^4.0.1",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "chalk": "^4.0.0",
     "cors": "^2.8.5",
@@ -34,8 +34,6 @@
     "json2csv": "^5.0.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.9",
-    "mongoose-autopopulate": "^0.12.2",
-    "uniqid": "^5.2.0",
     "validator": "^13.0.0"
   },
   "devDependencies": {
