@@ -25,8 +25,7 @@ const FormSchema = new mongoose.Schema({
   },
   url: {
     type: 'String',
-    required: true,
-    unique: true,
+    default: '',
   },
   createOn: {
     type: Date,
@@ -52,12 +51,10 @@ const FormSchema = new mongoose.Schema({
 });
 
 FormSchema.pre('save', function(next, doc) {
-  console.log('This is pre hook');
   next();
 });
 
-FormSchema.post('save', function(doc, next) {
-  console.log('This is a post hook');
+FormSchema.post('save', async function(doc, next) {
   next();
 });
 

@@ -1,7 +1,7 @@
 /* eslint-disable prefer-promise-reject-errors */
 const Form = require('../../models/form');
-const mongoErrorHelper = require('../../controllers/helpers/MongoErrorHelper');
 const crypto = require('../helpers/crypto');
+const mongoErrorHelper = require('../../controllers/helpers/MongoErrorHelper');
 
 const formGenerationHandler = (formName, fields, description, user) => {
   return new Promise(async (resolve, reject) => {
@@ -10,9 +10,11 @@ const formGenerationHandler = (formName, fields, description, user) => {
         formName: formName.trim(),
         userId: user._id,
         description: description.trim(),
-        url: process.env.FRONTEND_BASEURL + crypto.encrypt(formName),
         fields: fields,
       });
+      await newForm.save();
+      newForm.url =
+      process.env.FRONTEND_BASEURL + crypto.encrypt(newForm._id.toString());
       await newForm.save();
       resolve({
         statusCode: 1,

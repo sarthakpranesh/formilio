@@ -5,10 +5,10 @@ const Form = require('../../models/form');
 // importing helper functions
 const validateResponse = require('../helpers/validateResponse');
 
-const addResponseHandler = ({formName, responseFields} = {}) => {
+const addResponseHandler = ({fid, responseFields} = {}) => {
   return new Promise(async (resolve, reject) => {
     try {
-      const form = await Form.findByFormName(formName);
+      const form = await Form.findByFormId(fid);
       const error = await validateResponse(form.fields, responseFields);
       if (error.length !== 0) {
         return resolve({
@@ -18,7 +18,7 @@ const addResponseHandler = ({formName, responseFields} = {}) => {
           isResponseAdded: false,
         });
       }
-      const response = new Response({formName: formName, any: responseFields});
+      const response = new Response({fid: fid, any: responseFields});
       await response.save();
       return resolve({
         status: 200,

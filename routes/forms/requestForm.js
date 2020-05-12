@@ -6,10 +6,10 @@ const Form = require('../../models/form');
 
 app.get('/requestForm', (req, res) => {
   console.log(chalk.yellow('Request Form Details'));
-  if (!req.query.formName) {
+  if (!req.query.fid) {
     return res.sendStatus(400).end();
   }
-  Form.findByFormName(crypto.decrypt(req.query.formName))
+  Form.findByFormId(crypto.decrypt(req.query.fid))
       .then((form) => {
         if (!form) {
           return res.status(200).send({

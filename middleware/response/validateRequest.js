@@ -14,7 +14,7 @@ const validateResponse = (req, res, next) => {
       console.log(error);
       return res.sendStatus(403).end();
     }
-    req.body.formName = crypto.decrypt(req.body.formName);
+    req.body.fid = crypto.decrypt(req.body.fid);
     next();
   });
 };
