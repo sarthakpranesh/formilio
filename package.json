@@ -34,6 +34,7 @@
     "json2csv": "^5.0.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.9",
+    "throng": "^4.0.0",
     "validator": "^13.0.0"
   },
   "devDependencies": {
