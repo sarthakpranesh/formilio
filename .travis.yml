@@ -1,5 +1,8 @@
 language: node_js
 node_js:
-  - 13
+  - 14
 cache:
   npm: false
+script:
+  - npm install
+  - npm run test

@@ -1,8 +1,12 @@
 const mongoose = require('mongoose');
 const chalk = require('chalk');
 
+const mongoUser = process.env.MONGO_USER;
+const mongoPass = process.env.MONGO_PASS;
+const uri = `mongodb+srv://${mongoUser}:${mongoPass}@formilio-2020-mvcqj.mongodb.net/test?retryWrites=true&w=majority`;
+
 mongoose.connect(
-    process.env.MONGODB_URI,
+    uri,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
