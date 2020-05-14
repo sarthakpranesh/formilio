@@ -21,6 +21,9 @@ UserSchema.statics.findUserWithEmail = (email) => {
   return new Promise(async (resolve, reject) => {
     try {
       const user = await User.findOne({email});
+      if (!user) {
+        resolve(false);
+      }
       resolve(user.toObject());
     } catch (err) {
       reject(err.message);

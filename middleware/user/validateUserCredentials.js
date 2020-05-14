@@ -3,15 +3,16 @@ const Base64 = require('js-base64').Base64;
 
 const validateCreateUserRequest = (req, res, next) => {
   try {
-    const email = req.body.email;
-    const password = req.body.password;
-    if (validator.isEmail(email) && ![undefined, null, ''].includes(password)) {
+    const email = req.body.email ? req.body.email : '';
+    const password = req.body.password ? req.body.password : '';
+    console.log(!validator.isEmpty(password));
+    if (validator.isEmail(email) && !validator.isEmpty(password)) {
       if (password.length < 6 || password.length > 40) {
         return res.status(400).send({
           status: 400,
           statusCode: 8,
           error: 'Password needs to have 6 - 40 characters',
-          userToken: null,
+          isUserCreated: false,
         }).end();
       }
       req.email = email;
@@ -21,8 +22,8 @@ const validateCreateUserRequest = (req, res, next) => {
     return res.status(400).send({
       status: 400,
       statusCode: 8,
-      error: 'Email or Password not valid',
-      userToken: null,
+      error: 'Email or Password not provided',
+      isUserCreated: false,
     }).end();
   } catch (err) {
     console.log(err.message);
@@ -30,7 +31,7 @@ const validateCreateUserRequest = (req, res, next) => {
       status: 500,
       statusCode: 9,
       error: err.message,
-      userToken: null,
+      isUserCreated: false,
     }).end();
   }
 };

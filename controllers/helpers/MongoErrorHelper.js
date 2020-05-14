@@ -7,7 +7,7 @@ const errorNames = {
     });
   },
   'MongoError': (error) => {
-    return `${Object.keys(error.keyValue)} already exists`;
+    return `${Object.keys(error.keyValue)} already registered. Try logging in!`;
   },
 };
 

@@ -8,6 +8,14 @@ const signInUserHandler = (email, password) => {
   return new Promise( async (resolve, reject) => {
     try {
       const user = await User.findUserWithEmail(email);
+      if (!user) {
+        return resolve({
+          status: 200,
+          statusCode: 6,
+          error: 'User account not registered. Sign Up Now!',
+          payload: null,
+        });
+      }
       const check = bcrypt.compareSync(password, user.password);
       if (!!check) {
         const token = jwt.sign({_id: user._id}, process.env.JWT_KEY);
@@ -24,7 +32,7 @@ const signInUserHandler = (email, password) => {
       return resolve({
         status: 403,
         statusCode: 7,
-        error: 'Not Authorized',
+        error: 'Password Incorrect!',
         payload: null,
       });
     } catch (err) {

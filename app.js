@@ -34,6 +34,8 @@ const startServer = (id) => {
   const getFormResponse = require('./routes/forms/getFormResponse');
   const getValidator = require('./routes/forms/getValidators');
 
+  // delete route only for tests
+  const deleteUser = require('./routes/user/deleteUser');
 
   // importing layer middleware
   const validateUserToken = require('./middleware/user/validateUserToken');
@@ -45,6 +47,10 @@ const startServer = (id) => {
   app.use(addResponse);
   app.use(createUser);
   app.use(signInUser);
+  if (port === '8080') {
+    console.log('Dev Server');
+    app.use(deleteUser);
+  }
   app.use(validateUserToken);
   app.use(getValidator);
   app.use(createForm);
