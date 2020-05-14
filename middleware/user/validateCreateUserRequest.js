@@ -6,6 +6,14 @@ const validateCreateUserRequest = (req, res, next) => {
     const email = req.body.email;
     const password = req.body.password;
     if (validator.isEmail(email) && ![undefined, null, ''].includes(password)) {
+      if (password.length < 6 || password.length > 40) {
+        return res.status(400).send({
+          status: 400,
+          statusCode: 8,
+          error: 'Password needs to have 6 - 40 characters',
+          userToken: null,
+        }).end();
+      }
       req.email = email;
       req.password = Base64.decode(password);
       return next();
