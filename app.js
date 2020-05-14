@@ -62,9 +62,6 @@ app.listen(port, () => {
   console.log(chalk.green(
       'Server started successfully: ',
       port,
-      ' || ',
-      'Worker Id: ',
-      id,
   ));
 });
 
