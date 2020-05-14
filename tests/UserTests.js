@@ -2,12 +2,12 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const assert = require('assert');
-const app = require('../app');
+require('../app');
 
 chai.use(chaiHttp);
 
 // const requestor = chai.request('localhost:8080').keepOpen();
-const requestor = chai.request(app).keepOpen();
+const requestor = chai.request('localhost:8080').keepOpen();
 let id = '';
 
 
