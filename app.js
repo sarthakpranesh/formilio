@@ -2,13 +2,13 @@ const throng = require('throng');
 const port = process.env.PORT;
 const WORKERS = process.env.WEB_CONCURRENCY || 2;
 
-const startServer = (id) => {
-  const express = require('express');
-  const app = express();
-  const chalk = require('chalk');
-  const bodyParser = require('body-parser');
-  const cors = require('cors');
+const express = require('express');
+const app = express();
+const chalk = require('chalk');
+const bodyParser = require('body-parser');
+const cors = require('cors');
 
+const startServer = (id) => {
   // initializing mongo connection
   require('./config/mongoDb');
 
@@ -76,3 +76,5 @@ throng({
   lifetime: Infinity,
   grace: 1000,
 }, startServer);
+
+module.exports = app;
