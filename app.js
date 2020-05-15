@@ -5,6 +5,8 @@ const app = express();
 const chalk = require('chalk');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const rateLimit = require('express-rate-limit');
+const helmet = require('helmet');
 
 
 // initializing mongo connection
@@ -42,12 +44,13 @@ const validateGetForm = require('./middleware/form/validateGetForm');
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 200, // limit each IP to 100 requests per windowMs
+  max: 200, // limit each IP to 200 requests per windowMs
 });
 
 // using routes and client specific middleware
 app.set('trust proxy', 1);
 app.use(limiter);
+app.use(helmet());
 app.use(cors());
 app.use(requestForm);
 app.use(addResponse);
