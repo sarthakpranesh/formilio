@@ -24,6 +24,7 @@ app.use((req, res, next) => {
 const requestForm = require('./routes/forms/requestForm');
 const addResponse = require('./routes/response/submitResponse');
 const createUser = require('./routes/user/createUser');
+const verifyEmail = require('./routes/user/verifyEmail');
 const signInUser = require('./routes/user/signInUser');
 const createForm = require('./routes/forms/createForm');
 const deleteForm = require('./routes/forms/deleteForm');
@@ -44,6 +45,7 @@ app.use(cors());
 app.use(requestForm);
 app.use(addResponse);
 app.use(createUser);
+app.use(verifyEmail);
 app.use(signInUser);
 if (port === '8080') {
   console.log('Dev Server');
