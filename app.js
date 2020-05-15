@@ -40,7 +40,14 @@ const deleteUser = require('./routes/user/deleteUser');
 const validateUserToken = require('./middleware/user/validateUserToken');
 const validateGetForm = require('./middleware/form/validateGetForm');
 
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 200, // limit each IP to 100 requests per windowMs
+});
+
 // using routes and client specific middleware
+app.set('trust proxy', 1);
+app.use(limiter);
 app.use(cors());
 app.use(requestForm);
 app.use(addResponse);
