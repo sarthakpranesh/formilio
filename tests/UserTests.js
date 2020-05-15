@@ -93,7 +93,7 @@ describe('User Route Tests', () => {
             assert.equal(resp.body.isUserCreated, true);
             assert.equal(resp.status, 200);
           });
-    });
+    }).timeout(10000);
 
     it('Correct request but Email already registered', async () => {
       await requestor.post('/createUser')

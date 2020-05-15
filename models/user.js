@@ -15,6 +15,10 @@ const UserSchema = new mongoose.Schema({
     required: true,
     default: true,
   },
+  token: {
+    type: String,
+    required: true,
+  },
 });
 
 UserSchema.statics.findUserWithEmail = (email) => {
