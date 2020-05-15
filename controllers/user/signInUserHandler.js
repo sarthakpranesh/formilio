@@ -24,6 +24,7 @@ const signInUserHandler = (email, password) => {
           statusCode: 1,
           error: null,
           payload: {
+            isEmailVerified: user.isEmailVerified,
             signInToken: token,
           },
         });

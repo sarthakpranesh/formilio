@@ -217,6 +217,7 @@ describe('User Route Tests', () => {
             assert.equal(resp.body.statusCode, 1);
             assert.equal(resp.body.error, null);
             assert.equal(resp.body.status, resp.status);
+            assert.equal(resp.body.payload.isEmailVerified, false);
             assert.equal(!!resp.body.payload.signInToken, true);
             assert.equal(resp.status, 200);
 
