@@ -24,7 +24,6 @@ const signInUserHandler = (email, password) => {
           statusCode: 1,
           error: null,
           payload: {
-            user,
             signInToken: token,
           },
         });
