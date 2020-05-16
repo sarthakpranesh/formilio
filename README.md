@@ -7,8 +7,11 @@ mind ease of access and usability. Using Formilio is simple and straight forward
 <p>
 This repository holds the nodejs (express) server responsible for almost all the business logic present in Formilio. Some of the functionalities of the server include User Creation, User signing in with custom JWT, form listing, form generation, collection of responses, creation of response files, etc.
 </p>
-You can fully customize the [Formilio app](https://github.com/sarthakpranesh/formilioReactNative), [frontend form frontend](https://github.com/sarthakpranesh/formilio-frontend) and backend api as per your needs and requirements if you wish to implement your own project over it.
+You can fully customize the Formilio React Native app, frontend form and backend api as per your needs and requirements if you wish to implement your own project over it.
 Don't forget to star the project 🌟
+
+- [Formilio React Native app](https://github.com/sarthakpranesh/formilioReactNative)
+- [Formilio frontend form](https://github.com/sarthakpranesh/formilio-frontend)
 
 ## Download App's Latest-Release: [Formilio](https://github.com/sarthakpranesh/formilioReactNative/raw/build/formilio.apk)
 
