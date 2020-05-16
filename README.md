@@ -35,7 +35,7 @@ For running this project locally make sure you have nodejs installed and follow 
     ```
 
     - PORT: this will be the port on which your server will run on locally
-    - MONGO_USER & MONGO_PASS: our server uses Mongo DB Atlas for storing information, hence you need to crete a mongo database. After creating the mongo database create a user access account in `Database Access` and store those details here respectively. This will allow the server to connect to your database securely. Also please add `0.0.0.0/0` in your `Network Access` section in the database
+    - MONGO_USER & MONGO_PASS: our server uses Mongo DB Atlas for storing information, hence you need to create a mongo database. After creating the mongo database create a user access account in `Database Access` and store those details here respectively. This will allow the server to connect to your database securely. Also please add `0.0.0.0/0` in your `Network Access` section in the database
     - JWT_KEY: this secret key will be used for signing and validating the JWT tokens created ( for user login and authentication of users )
     - FRONTEND_BASEURL: this should point to your self hosted frontend url and should be of the format `https://your-url.com/`
     - ENCRYPTION_KEY: this key will be used in the generation of your frontend form urls.
