@@ -16,7 +16,6 @@ const sendEmail = (email, token) => {
         subject: 'Verify email address - Formilio',
         text: 'Thank you for registering. Please click on the following link to verify your email - https://formilio-backend.herokuapp.com/auth/verifyEmail?token='+token,
       }, (err, info) => {
-        console.log(info);
         if (err) {
           console.log(err);
         }
