@@ -5,11 +5,11 @@ const User = require('../../models/user');
 const validateUserToken = async (req, res, next) => {
   try {
     const token = req.headers.authorization;
-    console.log('User token: ', token);
     if (!!token) {
       const verify = jwt.verify(token.replace('Bearer ', ''), process.env.JWT_KEY);
       if (!!verify) {
         const user = await User.findById({_id: verify._id});
+        console.log('User token: ', token);
         req.user = user;
         return next();
       }

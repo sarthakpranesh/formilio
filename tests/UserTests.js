@@ -8,8 +8,6 @@ chai.use(chaiHttp);
 
 // const requestor = chai.request('localhost:8080').keepOpen();
 const requestor = chai.request('localhost:8080').keepOpen();
-let id = '';
-
 
 describe('User Route Tests', () => {
   describe('Sign Up User', () => {
@@ -17,7 +15,7 @@ describe('User Route Tests', () => {
       await requestor.post('/createUser')
           .send({
             email: 'sadfghjfgh',
-            password: 'qwertyuiop',
+            password: 'cXdlcnR5dWlvcA==',
           })
           .then((resp) => {
             assert.equal(resp.body.statusCode, 8);
@@ -45,7 +43,7 @@ describe('User Route Tests', () => {
       await requestor.post('/createUser')
           .send({
             email: 'testingEmail@gmail.com',
-            password: 'qwertyuiopqwertyuiopqwertyuiopqwertyuiopqwe',
+            password: 'cXdlcnR5dWlvcA==cXdlcnR5dWlvcA==cXdlcnR5dWlvcA==cXdlcnR5dWlvcA==qwe',
           })
           .then((resp) => {
             assert.equal(resp.body.statusCode, 8);
@@ -58,7 +56,7 @@ describe('User Route Tests', () => {
     it('Bad request - email field missing', async () => {
       await requestor.post('/createUser')
           .send({
-            password: 'qwertyuiop',
+            password: 'cXdlcnR5dWlvcA==',
           })
           .then((resp) => {
             assert.equal(resp.body.statusCode, 8);
@@ -85,7 +83,7 @@ describe('User Route Tests', () => {
       await requestor.post('/createUser')
           .send({
             email: 'testingEmail@gmail.com',
-            password: 'qwertyuiop',
+            password: 'cXdlcnR5dWlvcA==',
           })
           .then((resp) => {
             assert.equal(resp.body.statusCode, 1);
@@ -99,7 +97,7 @@ describe('User Route Tests', () => {
       await requestor.post('/createUser')
           .send({
             email: 'testingEmail@gmail.com',
-            password: 'qwertyuiop',
+            password: 'cXdlcnR5dWlvcA==',
           })
           .then((resp) => {
             assert.equal(resp.body.statusCode, 8);
@@ -115,7 +113,7 @@ describe('User Route Tests', () => {
       await requestor.post('/signInUser')
           .send({
             email: 'sadfghjfgh',
-            password: 'qwertyuiop',
+            password: 'cXdlcnR5dWlvcA==',
           })
           .then((resp) => {
             assert.equal(resp.body.statusCode, 8);
@@ -143,7 +141,7 @@ describe('User Route Tests', () => {
       await requestor.post('/signInUser')
           .send({
             email: 'testingEmail@gmail.com',
-            password: 'qwertyuiopqwertyuiopqwertyuiopqwertyuiopqwe',
+            password: 'cXdlcnR5dWlvcA==cXdlcnR5dWlvcA==cXdlcnR5dWlvcA==cXdlcnR5dWlvcA==qwe',
           })
           .then((resp) => {
             assert.equal(resp.body.statusCode, 8);
@@ -156,7 +154,7 @@ describe('User Route Tests', () => {
     it('Bad request - email field missing', async () => {
       await requestor.post('/signInUser')
           .send({
-            password: 'qwertyuiop',
+            password: 'cXdlcnR5dWlvcA==',
           })
           .then((resp) => {
             assert.equal(resp.body.statusCode, 8);
@@ -183,7 +181,7 @@ describe('User Route Tests', () => {
       await requestor.post('/signInUser')
           .send({
             email: 'rthwdefjgbhyb@gmail.com',
-            password: 'qwertyuiop',
+            password: 'cXdlcnR5dWlvcA==',
           })
           .then((resp) => {
             assert.equal(resp.body.statusCode, 6);
@@ -211,7 +209,7 @@ describe('User Route Tests', () => {
       await requestor.post('/signInUser')
           .send({
             email: 'testingEmail@gmail.com',
-            password: 'qwertyuiop',
+            password: 'cXdlcnR5dWlvcA==',
           })
           .then((resp) => {
             assert.equal(resp.body.statusCode, 1);
@@ -220,8 +218,6 @@ describe('User Route Tests', () => {
             assert.equal(resp.body.payload.isEmailVerified, false);
             assert.equal(!!resp.body.payload.signInToken, true);
             assert.equal(resp.status, 200);
-
-            id = resp.body.payload.user._id;
           });
     });
   });
@@ -230,7 +226,7 @@ describe('User Route Tests', () => {
     it('removing test user', async () => {
       await requestor.delete('/auth/deleteUser')
           .send({
-            id,
+            'email': 'testingEmail@gmail.com',
           })
           .then((resp) => {
             assert.equal(resp.status, 200);
