@@ -1,4 +1,17 @@
+<div align="center">
+
+<img height=200px src="assets/project-logo.png">
+
 # Formilio - API
+
+[![Build Status](https://travis-ci.com/sarthakpranesh/formilio.svg?branch=master)](https://travis-ci.com/sarthakpranesh/formilio)
+[![GitHub issues](https://img.shields.io/github/issues/sarthakpranesh/formilioReactNative)](https://github.com/sarthakpranesh/formilio/issues)
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/m/sarthakpranesh/formilioReactNative)](https://github.com/sarthakpranesh/formilio/commits/master)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/sarthakpranesh/formilioReactNative)](https://github.com/sarthakpranesh/formilio/pulls)
+[![GitHub](https://img.shields.io/github/license/sarthakpranesh/formilioReactNative)](https://github.com/sarthakpranesh/formilio/blob/master/LICENSE)
+
+</div>
+
 ## Meet Formilio - form generator for your daily needs!
 <p>
 Welcome to Formilio! The goal behind formilio is to provide an open source form generation tool ( like google forms ), keeping in
